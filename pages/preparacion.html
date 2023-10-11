@@ -9,7 +9,54 @@
 </head>
 
 <body>
-    <script src="../script.js"></script>
+    <div class="grid-container">
+        <header>
+            <h1>Burgers</h1>
+            <h2>¡Arma tu burger como quieras!</h2>
+        </header>
+        <main>
+            <section class="armado">
+                <div class="armado__agregados" id="agregados">
+                    <h3>Agregados</h3>
+                    <ul>
+                        <li><input type="checkbox" id="checkbox1"> <label for="checkbox1">Tomate</label></li>
+                        <li><input type="checkbox" id="checkbox2"> <label for="checkbox2">Lechuga</label></li>
+                        <li><input type="checkbox" id="checkbox3"> <label for="checkbox3">Bacon</label></li>
+                        <li><input type="checkbox" id="checkbox4"> <label for="checkbox4">Huevo</label></li>
+                        <li><input type="checkbox" id="checkbox5"> <label for="checkbox5">Cebolla</label></li>
+                        <li><input type="checkbox" id="checkbox6"> <label for="checkbox6">Cheddar</label></li>
+                    </ul>
+                </div>
+                <div class="armado__aderezos" id="aderezos">
+                    <h3>Aderezos</h3>
+                    <ul>
+                        <li><input type="checkbox" id="checkbox7"> <label for="checkbox7">Mayonesa</label></li>
+                        <li><input type="checkbox" id="checkbox8"> <label for="checkbox8">Ketchup</label></li>
+                        <li><input type="checkbox" id="checkbox9"> <label for="checkbox9">Mostaza</label></li>
+                        <li><input type="checkbox" id="checkbox10"> <label for="checkbox10">Salsa Golf</label></li>
+                        <li><input type="checkbox" id="checkbox11"> <label for="checkbox11">Picante</label></li>
+                    </ul>
+                </div>
+                <div class="armado__bebida" id="bebida">
+                    <h3>Bebida</h3>
+                    <ul>
+                        <li><input type="checkbox" id="checkbox12"> <label for="checkbox12">Pepsi</label></li>
+                        <li><input type="checkbox" id="checkbox13"> <label for="checkbox13">Mirinda</label></li>
+                        <li><input type="checkbox" id="checkbox14"> <label for="checkbox14">7 Up</label></li>
+                        <li><input type="checkbox" id="checkbox15"> <label for="checkbox15">Agua mineral</label></li>
+                        <li><input type="checkbox" id="checkbox16"> <label for="checkbox16">Agua saborizada</label></li>
+                    </ul>
+                </div>
+            </section>
+            <div class="provisorio">
+                <p id="total">TOTAL: $</p>
+                <a href="#">
+                    <button type="button">Siguiente</button>
+                </a>
+            </div>
+        </main>
+
+        <script src="../script.js"></script>
 </body>
 
 </html>

@@ -4,10 +4,12 @@
     box-sizing: border-box;
 }
 
-.grid-contaier {
+.grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: "h1 h1 h1" "h2 h2 h2" "burgers burgers burgers";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "h1" "h2" "h3" "burgers" "button";
+
 }
 
 h1 {
@@ -25,6 +27,7 @@ h2 {
 h3 {
     display: flex;
     justify-content: center;
+    grid-area: h3;
 }
 
 .burgers {
@@ -36,4 +39,25 @@ h3 {
 
 .burgers__tamaño {
     border: 1px solid black;
+}
+
+.armado {
+    grid-area: burgers;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.armado__agregados, .armado__aderezos, .armado__bebida {
+    border: 1px solid black;
+}
+
+ul {
+    list-style: none;
+}
+
+.provisorio {
+    grid-area: button;
+    display: flex;
+    justify-content: center;
 }
