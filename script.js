@@ -1,4 +1,6 @@
 //HAMBURGUESAS TAMAÑO
+const checkboxes = document.querySelectorAll('input[type="checkbox"]')
+
 const burgerS = document.getElementById("burgerS")
 const objetoBurgerS = {
     elemento: burgerS,
@@ -21,18 +23,25 @@ let objetoBurgerL = {
 const total = document.getElementById("total")
 const tamaño = document.querySelectorAll(".tamaño")
 
+let tamañoSeleccionado = ""
+
 const S = document.getElementById("S")
 S.addEventListener("click", function(){
     total.textContent = "TOTAL: $" + objetoBurgerS.precio.toString() 
+    tamañoSeleccionado = objetoBurgerS.precio
 })
 const M = document.getElementById("M")
 M.addEventListener("click", function(){
-    total.textContent = "TOTAL: $" + objetoBurgerM.precio.toString()  
+    total.textContent = "TOTAL: $" + objetoBurgerM.precio.toString() 
+    tamañoSeleccionado = objetoBurgerM.precio 
 })
 const L = document.getElementById("L")
 L.addEventListener("click", function(){
     total.textContent = "TOTAL: $" + objetoBurgerL.precio.toString();
+    tamañoSeleccionado = objetoBurgerL.precio
 })
+
+
 
 //AGREGADOS
 const tomate = document.getElementById("checkbox1");
@@ -81,9 +90,9 @@ for(const agregados of checkboxArray) {
 
 checkbox1.addEventListener("change", function() {
     if (checkbox1.checked) {
-        total.textContent = "TOTAL: $" + (objetoBurgerS.precio + objetoTomate.precio).toString()
+        total.textContent = "TOTAL: $" + (tamañoSeleccionado + objetoTomate.precio).toString()
     } else {
-        total.textContent = "TOTAL: $" + objetoBurgerS.precio.toString();
+        total.textContent = "TOTAL: $" + tamañoSeleccionado.toString();
     }
 }) 
 
