@@ -1,31 +1,89 @@
-//INDEX
-let burgerS = document.getElementById("burgerS")
-let objetoBurgerS = {
+//HAMBURGUESAS TAMAÑO
+const burgerS = document.getElementById("burgerS")
+const objetoBurgerS = {
     elemento: burgerS,
     precio: 1500
 }
 
-let burgerM = document.getElementById("burgerM")
+const burgerM = document.getElementById("burgerM")
 let objetoBurgerM = {
     elemento: burgerM,
     precio: 1700
 }
 
-let burgerL = document.getElementById("burgerL")
+const burgerL = document.getElementById("burgerL")
 let objetoBurgerL = {
     elemento: burgerL,
     precio: 1900
 }
 
-//PREPARACION
+//SELECCION DE TAMAÑO DE HAMBURGUESA Y AGREGADO DEL PRECIO
+const total = document.getElementById("total")
+const tamaño = document.querySelectorAll(".tamaño")
+
 const S = document.getElementById("S")
-S.addEventListener("click", function(event){
-    total.innerHTML = "TOTAL: $" + objetoBurgerS.precio.toString()  
+S.addEventListener("click", function(){
+    total.textContent = "TOTAL: $" + objetoBurgerS.precio.toString() 
 })
 const M = document.getElementById("M")
-M.addEventListener("click", function(event){
-    total.innerHTML = "TOTAL: $" + objetoBurgerM.precio.toString()  
+M.addEventListener("click", function(){
+    total.textContent = "TOTAL: $" + objetoBurgerM.precio.toString()  
+})
+const L = document.getElementById("L")
+L.addEventListener("click", function(){
+    total.textContent = "TOTAL: $" + objetoBurgerL.precio.toString();
 })
 
-// let total = document.getElementById("total")
-// total.innerHTML = "TOTAL: $" + objetoBurgerS.precio.toString() 
+//AGREGADOS
+const tomate = document.getElementById("checkbox1");
+const objetoTomate = {
+    elemento: "tomate",
+    precio: 200
+}
+
+const lechuga = document.getElementById("checkbox2");
+const objetoLechuga = {
+    elemento: "lechuga",
+    precio: 200
+};
+
+const bacon = document.getElementById("checkbox3");
+const objetoBacon = {
+    elemento: "bacon",
+    precio: 200
+};
+
+const huevo = document.getElementById("checkbox4");
+const objetoHuevo = {
+    elemento: "huevo",
+    precio: 200
+};
+
+const cebolla = document.getElementById("checkbox5");
+const objetoCebolla = {
+    elemento: "cebolla",
+    precio: 200
+};
+
+const cheddar = document.getElementById("checkbox6");
+const objetoCheddar = {
+    elemento: "cheddar",
+    precio: 200
+};
+
+
+const checkboxArray = [objetoTomate, objetoLechuga, objetoBacon, objetoHuevo, objetoCebolla, objetoCheddar]
+for(const agregados of checkboxArray) {
+    console.log (agregados)
+}
+
+//SELECCION AGREGADOS Y PRECIO
+
+checkbox1.addEventListener("change", function() {
+    if (checkbox1.checked) {
+        total.textContent = "TOTAL: $" + (objetoBurgerS.precio + objetoTomate.precio).toString()
+    } else {
+        total.textContent = "TOTAL: $" + objetoBurgerS.precio.toString();
+    }
+}) 
+
