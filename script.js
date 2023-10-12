@@ -18,5 +18,14 @@ let objetoBurgerL = {
 }
 
 //PREPARACION
-let total = document.getElementById("total")
-total.innerHTML = "TOTAL: $" + objetoBurgerL.precio.toString() 
+const S = document.getElementById("S")
+S.addEventListener("click", function(event){
+    total.innerHTML = "TOTAL: $" + objetoBurgerS.precio.toString()  
+})
+const M = document.getElementById("M")
+M.addEventListener("click", function(event){
+    total.innerHTML = "TOTAL: $" + objetoBurgerM.precio.toString()  
+})
+
+// let total = document.getElementById("total")
+// total.innerHTML = "TOTAL: $" + objetoBurgerS.precio.toString() 
