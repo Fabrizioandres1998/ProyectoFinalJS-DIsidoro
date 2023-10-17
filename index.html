@@ -18,13 +18,13 @@
             <h3>Selecciona el tamaño de tu burger</h3>
             <section class="burgers">
                     <div class="burgers__tamaño" id="burgerS">
-                        <a href="#" id="S" class="tamaño">Burger S</a>
+                        <button id="S" class="tamaño">Burger S</button>
                     </div>
                     <div class="burgers__tamaño" id="burgerM">
-                        <a href="#" id="M" class="tamaño">Burger M</a>
+                        <button id="M" class="tamaño">Burger M</button>
                     </div>
                     <div class="burgers__tamaño" id="burgerL">
-                        <a href="#" id="L" class="tamaño">Burger L</a>
+                        <button id="L" class="tamaño">Burger L</button>
                     </div>
             </section>
         </main>
@@ -34,12 +34,12 @@
         <div class="armado__agregados" id="agregados">
             <h3>Agregados</h3>
             <ul>
-                <li><input type="checkbox" id="checkbox1"> <label for="checkbox1">Tomate</label></li>
-                <li><input type="checkbox" id="checkbox2"> <label for="checkbox2">Lechuga</label></li>
-                <li><input type="checkbox" id="checkbox3"> <label for="checkbox3">Bacon</label></li>
-                <li><input type="checkbox" id="checkbox4"> <label for="checkbox4">Huevo</label></li>
-                <li><input type="checkbox" id="checkbox5"> <label for="checkbox5">Cebolla</label></li>
-                <li><input type="checkbox" id="checkbox6"> <label for="checkbox6">Cheddar</label></li>
+                <li><input type="checkbox" id="tomate"> <label for="tomate">Tomate</label></li>
+                <li><input type="checkbox" id="lechuga"> <label for="lechuga">Lechuga</label></li>
+                <li><input type="checkbox" id="bacon"> <label for="bacon">Bacon</label></li>
+                <li><input type="checkbox" id="huevo"> <label for="huevo">Huevo</label></li>
+                <li><input type="checkbox" id="cebolla"> <label for="cebolla">Cebolla</label></li>
+                <li><input type="checkbox" id="cheddar"> <label for="cheddar">Cheddar</label></li>
             </ul>
         </div>
         <div class="armado__aderezos" id="aderezos">
@@ -65,9 +65,7 @@
     </section>
     <div class="provisorio">
         <p id="total">TOTAL: $</p>
-        <a href="#">
-            <button type="button">Siguiente</button>
-        </a>
+        <button type="button" id="siguienteBtn">Siguiente</button>
     </div>
 
     <script src="script.js"></script>

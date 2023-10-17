@@ -1,155 +1,76 @@
-const checkboxes = document.querySelectorAll('input[type="checkbox"]')
+//GET
+const burgers = document.querySelectorAll('.burgers .burgers__tamaño')
+const armadoAgregados = document.querySelectorAll('.armado__agregados input[type="checkbox"]')
+const armadoAderezos = document.querySelectorAll('.armado__aderezos input[type="checkbox"]')
+const armadoBebidas = document.querySelectorAll('.armado__bebida input[type="checkbox"]')
+//PRECIO TOTAL
+let precioTotal = 0
+//TAMAÑO SELECCIONADO
+let tamañoSeleccionado = 0
 
-//HAMBURGUESAS TAMAÑO
-
-const burgerS = document.getElementById("burgerS")
-const objetoBurgerS = {
-    elemento: burgerS,
-    precio: 1500
-}
-
-const burgerM = document.getElementById("burgerM")
-let objetoBurgerM = {
-    elemento: burgerM,
-    precio: 1700
-}
-
-const burgerL = document.getElementById("burgerL")
-let objetoBurgerL = {
-    elemento: burgerL,
-    precio: 1900
-}
-
-//SELECCION DE TAMAÑO DE HAMBURGUESA Y AGREGADO DEL PRECIO
-const total = document.getElementById("total")
-const tamaño = document.querySelectorAll(".tamaño")
-
-let tamañoSeleccionado = ""
-
-const S = document.getElementById("S")
-S.addEventListener("click", function () {
-    total.textContent = "TOTAL: $" + objetoBurgerS.precio.toString()
-    tamañoSeleccionado = objetoBurgerS.precio
-    checkboxes.forEach((checkbox) => {
-        checkbox.checked = false
-    })
-})
-const M = document.getElementById("M")
-M.addEventListener("click", function () {
-    total.textContent = "TOTAL: $" + objetoBurgerM.precio.toString()
-    tamañoSeleccionado = objetoBurgerM.precio
-    checkboxes.forEach((checkbox) => {
-        checkbox.checked = false
-    })
-})
-const L = document.getElementById("L")
-L.addEventListener("click", function () {
-    total.textContent = "TOTAL: $" + objetoBurgerL.precio.toString()
-    tamañoSeleccionado = objetoBurgerL.precio
-    checkboxes.forEach((checkbox) => {
-        checkbox.checked = false
+burgers.forEach(burger => {
+    burger.addEventListener("click", function () {
+        tamañoSeleccionado = burger.id
+        console.log(tamañoSeleccionado)
+        precioBurger()
     })
 })
 
-//AGREGADOS
-const agregados = [
-    {
-        checkbox: document.getElementById("checkbox1"),
-        objeto: {
-            elemento: "tomate",
-            precio: 200
-        }
-    },
-    {
-        checkbox: document.getElementById("checkbox2"),
-        objeto: {
-            elemento: "lechuga",
-            precio: 200
-        }
-    },
-    {
-        checkbox: document.getElementById("checkbox3"),
-        objeto: {
-            elemento: "bacon",
-            precio: 200
-        }
-    },
-    {
-        checkbox: document.getElementById("checkbox4"),
-        objeto: {
-            elemento: "huevo",
-            precio: 200
-        }
-    },
-    {
-        checkbox: document.getElementById("checkbox5"),
-        objeto: {
-            elemento: "cebolla",
-            precio: 200
-        }
-    },
-    {
-        checkbox: document.getElementById("checkbox6"),
-        objeto: {
-            elemento: "cheddar",
-            precio: 200
-        }
+function precioBurger() {
+    if (tamañoSeleccionado === "burgerS") {
+        precioTotal += 1500
     }
-];
-
-//SELECCION AGREGADOS Y PRECIO
-
-checkbox1.addEventListener("change", function () {
-    if (checkbox1.checked) {
-        total.textContent =
-            "TOTAL: $" + (tamañoSeleccionado += agregados[0].objeto.precio)
-    } else {
-        total.textContent = 
-            "TOTAL: $" + (tamañoSeleccionado -= agregados[0].objeto.precio)
+    if (tamañoSeleccionado === "burgerM") {
+        precioTotal += 1800
     }
+    if (tamañoSeleccionado === "burgerL") {
+        precioTotal += 2100
+    }
+    console.log(precioTotal)
+}
+//ARMADO AGREGADOS
+let elementos = [{
+    nombre: "tomate",
+    precio: 200
+},
+{
+    nombre: "lechuga",
+    precio: 200
+},
+{
+    nombre: "bacon",
+    precio: 250
+},
+{
+    nombre: "huevo",
+    precio: 250
+},
+{
+    nombre: "cebolla",
+    precio: 200
+},
+{
+    nombre: "cheddar",
+    precio: 250
+}
+]
+
+let elementosAgregados = []
+
+armadoAgregados.forEach(agregado => {
+    agregado.addEventListener("change", function () {
+        if (agregado.checked) {
+            if (!elementosAgregados.includes(agregado.id)) {
+                elementosAgregados.push(agregado.id)
+                console.log(elementosAgregados)
+            }
+        } else {
+            const index = elementosAgregados.indexOf(agregado.id)
+            if (index !== -1) {
+                elementosAgregados.splice(index, 1)
+                console.log(elementosAgregados)
+            }
+        }
+    })
 })
 
-checkbox2.addEventListener("change", function () {
-    if (checkbox2.checked) {
-        total.textContent =
-            "TOTAL: $" + (tamañoSeleccionado += objetoLechuga.precio)
-    } else {
-        total.textContent = tamañoSeleccionado
-    }
-})
-
-checkbox3.addEventListener("change", function () {
-    if (checkbox3.checked) {
-        total.textContent =
-            "TOTAL: $" + (tamañoSeleccionado += objetoBacon.precio)
-    } else {
-        total.textContent = tamañoSeleccionado
-    }
-})
-
-checkbox4.addEventListener("change", function () {
-    if (checkbox4.checked) {
-        total.textContent =
-            "TOTAL: $" + (tamañoSeleccionado += objetoHuevo.precio)
-    } else {
-        total.textContent = tamañoSeleccionado
-    }
-})
-
-checkbox5.addEventListener("change", function () {
-    if (checkbox5.checked) {
-        total.textContent =
-            "TOTAL: $" + (tamañoSeleccionado += objetoCebolla.precio)
-    } else {
-        total.textContent = tamañoSeleccionado
-    }
-})
-
-checkbox6.addEventListener("change", function () {
-    if (checkbox6.checked) {
-        total.textContent =
-            "TOTAL: $" + (tamañoSeleccionado += objetoCheddar.precio)
-    } else {
-        total.textContent = tamañoSeleccionado
-    }
-})
