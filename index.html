@@ -12,7 +12,7 @@
     <div class="grid-container">
         <header>
             <h1>Burgers</h1>
-            <h2>¡Arma tu burger como quieras!</h2>
+            <h2>LOREM IPSUM</h2>
         </header>
         <main>
             <h3>Selecciona el tamaño de tu burger</h3>
@@ -31,6 +31,7 @@
     </div>
 
     <section class="armado">
+        <h3>¡Armala como quieras!</h3>
         <div class="armado__agregados" id="agregados">
             <h3>Agregados</h3>
             <ul>
@@ -63,10 +64,27 @@
             </ul>
         </div>
     </section>
-    <div class="provisorio">
+    <div class="precio">
         <p id="total">TOTAL: $</p>
-        <button type="button" id="siguienteBtn">Siguiente</button>
     </div>
+
+    <section class="formulario">
+        <div class="campo">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" class="input-text" name="nombre">
+        </div>
+        <div class="campo">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" class="input-text" name="direccion">
+        </div>
+        <div class="campo">
+            <label for="telefono">Número de Teléfono:</label>
+            <input type="tel" id="telefono" class="input-text" name="telefono">
+        </div>
+        <div class="campo">
+            <button id="completarPedido" class="boton">Completar Pedido</button>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
