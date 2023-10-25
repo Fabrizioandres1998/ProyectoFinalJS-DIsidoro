@@ -116,5 +116,8 @@ completar.addEventListener("click", function () {
     arrayCompletar.push(objetoAderezos)
     arrayCompletar.push(objetoBebidas)
     arrayCompletar.push(objetoCliente)
-    console.log(arrayCompletar)
+    alert("Pedido exitoso")
+    localStorage.setItem("pedido", JSON.stringify(arrayCompletar))
+    console.log(JSON.parse(localStorage.getItem("pedido")))
 })
+
