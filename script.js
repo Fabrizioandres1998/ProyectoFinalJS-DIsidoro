@@ -7,6 +7,7 @@ const checkboxes = document.querySelectorAll('input[type="checkbox"]')
 const formulario = document.querySelectorAll('.formulario input')
 const total = document.querySelector("#total")
 const completar = document.querySelector("#completarPedido")
+const pedidoCompletoLista = document.querySelector(".pedidoCompleto ul")
 
 //PRECIO TOTAL
 let precioTotal = 0
@@ -115,9 +116,9 @@ completar.addEventListener("click", function () {
     arrayCompletar.push(objetoAgregados)
     arrayCompletar.push(objetoAderezos)
     arrayCompletar.push(objetoBebidas)
-    arrayCompletar.push("total: $" + precioTotal)
     arrayCompletar.push(objetoCliente)
-    alert("Pedido exitoso")
+    arrayCompletar.push("total: $" + precioTotal)
+  
     localStorage.setItem("pedido", JSON.stringify(arrayCompletar))
     checkboxes.forEach(checkbox => {
         checkbox.checked = false
@@ -126,6 +127,18 @@ completar.addEventListener("click", function () {
         form.value = ""
     })
     
-    console.log(JSON.parse(localStorage.getItem("pedido")))
+    // let tamaño = arrayCompletar[0]
+    // let agregados = arrayCompletar[1]
+    // let aderezos = arrayCompletar [2]
+    // let bebida = arrayCompletar[3]
+    // let datos = arrayCompletar[4]
+    // let totaal = arrayCompletar[5]
+
+    
+    let pedidoEnStorage = JSON.parse(localStorage.getItem("pedido"))
+        let nuevoLi = document.createElement("li");
+        let contenidoLi = 
+        nuevoLi.textContent = contenidoLi;
+        pedidoCompletoLista.appendChild(nuevoLi);
 })
 
