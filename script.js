@@ -119,6 +119,13 @@ completar.addEventListener("click", function () {
     arrayCompletar.push(objetoCliente)
     alert("Pedido exitoso")
     localStorage.setItem("pedido", JSON.stringify(arrayCompletar))
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false
+    })
+    formulario.forEach(form => {
+        form.value = ""
+    })
+    
     console.log(JSON.parse(localStorage.getItem("pedido")))
 })
 
