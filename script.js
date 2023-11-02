@@ -22,7 +22,7 @@ burgers.forEach(burger => {
             checkbox.checked = false
         })
         tamañoSeleccionado = burger.name
-        objetoTamaño.tamaño = tamañoSeleccionado
+        objetoTamaño.Tamaño = tamañoSeleccionado
         precioTotal = parseInt(burger.value)
         total.innerHTML = "TOTAL: $ " + precioTotal
     })
@@ -30,7 +30,7 @@ burgers.forEach(burger => {
 
 //ARMADO AGREGADOS
 let elementosAgregados = []
-let objetoAgregados = { elementosAgregados: elementosAgregados }
+let objetoAgregados = { Agregados: elementosAgregados }
 
 armadoAgregados.forEach(agregado => {
     agregado.addEventListener("change", function () {
@@ -53,7 +53,7 @@ armadoAgregados.forEach(agregado => {
 
 //ARMADO ADEREZOS
 let elementosAderezos = []
-let objetoAderezos = { aderezos: elementosAderezos }
+let objetoAderezos = { Aderezos: elementosAderezos }
 
 armadoAderezos.forEach(aderezo => {
     aderezo.addEventListener("change", function () {
@@ -71,7 +71,7 @@ armadoAderezos.forEach(aderezo => {
 
 //ARMADO BEBIDA
 let elementosBebidas = []
-let objetoBebidas = { bebidas: elementosBebidas }
+let objetoBebidas = { Bebidas: elementosBebidas }
 
 armadoBebidas.forEach(bebida => {
     bebida.addEventListener("change", function () {
@@ -97,15 +97,15 @@ let objetoCliente = {}
 
 formulario.forEach(dato => {
     dato.addEventListener("input", function () {
-        if (dato.name === "nombre") {
-            objetoCliente.nombre = dato.value
+        if (dato.name === "Nombre") {
+            objetoCliente.Nombre = dato.value + ", "
         }
-        if (dato.name === "direccion") {
-            objetoCliente.direccion = dato.value
+        if (dato.name === "Direccion") {
+            objetoCliente.Direccion = dato.value + ", "
         }
-        if (dato.name === "telefono") {
-            objetoCliente.telefono = dato.value
-        }
+        if (dato.name === "Telefono") {
+            objetoCliente.Telefono = dato.value + ", "
+        }        
     })
 })
 
@@ -132,7 +132,7 @@ function mostrarPedido() {
     })
 }
 
-completar.addEventListener("click", function () {
+completar.addEventListener("click", () => {
     arrayCompletar.push(objetoTamaño)
     arrayCompletar.push(objetoAgregados)
     arrayCompletar.push(objetoAderezos)
