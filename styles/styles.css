@@ -8,7 +8,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    grid-template-areas: "h1" "h2" "burgers" "h3" "armado" "precio" "campo1" "campo2" "campo3" "campo4";
+    grid-template-areas: "h1" "h2" "burgers" "h3" "armado" "precio" "campo1" "campo2" "campo3" "campo4" "pedidoCompleto";
 
 }
 
@@ -44,7 +44,9 @@ h3 {
     justify-content: space-evenly;
 }
 
-.armado__agregados, .armado__aderezos, .armado__bebida {
+.armado__agregados,
+.armado__aderezos,
+.armado__bebida {
     border: 1px solid black;
     width: 170px;
     padding: 10px;
@@ -71,18 +73,27 @@ ul {
     display: flex;
     justify-content: center;
 }
+
 .campo2 {
     grid-area: campo2;
     display: flex;
     justify-content: center;
 }
+
 .campo3 {
     grid-area: campo3;
     display: flex;
     justify-content: center;
 }
+
 .campo4 {
     grid-area: campo4;
+    display: flex;
+    justify-content: center;
+}
+
+.pedidoCompleto {
+    grid-area: pedidoCompleto;
     display: flex;
     justify-content: center;
 }

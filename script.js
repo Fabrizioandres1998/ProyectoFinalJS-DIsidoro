@@ -24,7 +24,8 @@ burgers.forEach(burger => {
         tamañoSeleccionado = burger.name
         objetoTamaño.Tamaño = tamañoSeleccionado
         precioTotal = parseInt(burger.value)
-        total.innerHTML = "TOTAL: $ " + precioTotal
+        total.textContent = "TOTAL: $ " + precioTotal
+        pedidoCompletoLista.textContent = ""
     })
 })
 
@@ -38,14 +39,14 @@ armadoAgregados.forEach(agregado => {
             if (!elementosAgregados.includes(agregado.name)) {
                 elementosAgregados.push(agregado.name)
                 precioTotal += parseInt(agregado.value)
-                total.innerHTML = "TOTAL: $ " + precioTotal
+                total.textContent = "TOTAL: $ " + precioTotal
             }
         } else {
             const index = elementosAgregados.indexOf(agregado.name)
             if (index !== -1) {
                 elementosAgregados.splice(index, 1)
                 precioTotal -= parseInt(agregado.value)
-                total.innerHTML = "TOTAL: $ " + precioTotal
+                total.textContent = "TOTAL: $ " + precioTotal
             }
         }
     })
@@ -59,7 +60,7 @@ armadoAderezos.forEach(aderezo => {
     aderezo.addEventListener("change", function () {
         if (!elementosAderezos.includes(aderezo.name)) {
             elementosAderezos.push(aderezo.name)
-            total.innerHTML = "TOTAL: $ " + precioTotal
+            total.textContent = "TOTAL: $ " + precioTotal
         } else {
             const index = elementosAderezos.indexOf(aderezo.name)
             if (index !== -1) {
@@ -86,7 +87,7 @@ armadoBebidas.forEach(bebida => {
             if (index !== -1) {
                 elementosBebidas.splice(index, 1)
                 precioTotal -= parseInt(bebida.value)
-                total.innerHTML = "TOTAL : $ " + precioTotal
+                total.textContent = "TOTAL : $ " + precioTotal
             }
         }
     })
@@ -104,7 +105,7 @@ formulario.forEach(dato => {
             objetoCliente.Direccion = dato.value + ", "
         }
         if (dato.name === "Telefono") {
-            objetoCliente.Telefono = dato.value + ", "
+            objetoCliente.Telefono = dato.value
         }        
     })
 })
@@ -112,20 +113,18 @@ formulario.forEach(dato => {
 let arrayCompletar = []
 
 function mostrarPedido() {
-    pedidoCompletoLista.innerHTML = ""
-
+    pedidoCompletoLista.textContent = ""
     let pedidoEnStorage = JSON.parse(localStorage.getItem("pedido"))
 
     pedidoEnStorage.forEach(item => {
         let nuevoLi = document.createElement("li")
         if (typeof item === "object") {
-            // Si el elemento es un objeto, iterar sobre sus propiedades y mostrarlas
             Object.keys(item).forEach(key => {
                 let texto = key + ": " + item[key]
-                nuevoLi.appendChild(document.createTextNode(texto))
+                nuevoLi.textContent = texto
+                pedidoCompletoLista.appendChild(nuevoLi)
             })
         } else {
-            // Si el elemento no es un objeto, mostrarlo directamente
             nuevoLi.textContent = item
         }
         pedidoCompletoLista.appendChild(nuevoLi)
@@ -147,5 +146,5 @@ completar.addEventListener("click", () => {
     formulario.forEach(form => {
         form.value = ""
     })
-    mostrarPedido() // Llamar a la función para mostrar el pedido en la lista
+    mostrarPedido()
 })
