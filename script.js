@@ -29,7 +29,7 @@ burgers.forEach(burger => {
 })
 
 //ARMADO AGREGADOS
-let elementosAgregados = [];
+let elementosAgregados = []
 let objetoAgregados = { elementosAgregados: elementosAgregados }
 
 armadoAgregados.forEach(agregado => {
@@ -111,14 +111,35 @@ formulario.forEach(dato => {
 
 let arrayCompletar = []
 
+function mostrarPedido() {
+    pedidoCompletoLista.innerHTML = ""
+
+    let pedidoEnStorage = JSON.parse(localStorage.getItem("pedido"))
+
+    pedidoEnStorage.forEach(item => {
+        let nuevoLi = document.createElement("li")
+        if (typeof item === "object") {
+            // Si el elemento es un objeto, iterar sobre sus propiedades y mostrarlas
+            Object.keys(item).forEach(key => {
+                let texto = key + ": " + item[key]
+                nuevoLi.appendChild(document.createTextNode(texto))
+            })
+        } else {
+            // Si el elemento no es un objeto, mostrarlo directamente
+            nuevoLi.textContent = item
+        }
+        pedidoCompletoLista.appendChild(nuevoLi)
+    })
+}
+
 completar.addEventListener("click", function () {
     arrayCompletar.push(objetoTamaño)
     arrayCompletar.push(objetoAgregados)
     arrayCompletar.push(objetoAderezos)
     arrayCompletar.push(objetoBebidas)
     arrayCompletar.push(objetoCliente)
-    arrayCompletar.push("total: $" + precioTotal)
-  
+    arrayCompletar.push("Total: $" + precioTotal)
+
     localStorage.setItem("pedido", JSON.stringify(arrayCompletar))
     checkboxes.forEach(checkbox => {
         checkbox.checked = false
@@ -126,19 +147,5 @@ completar.addEventListener("click", function () {
     formulario.forEach(form => {
         form.value = ""
     })
-    
-    // let tamaño = arrayCompletar[0]
-    // let agregados = arrayCompletar[1]
-    // let aderezos = arrayCompletar [2]
-    // let bebida = arrayCompletar[3]
-    // let datos = arrayCompletar[4]
-    // let totaal = arrayCompletar[5]
-
-    
-    let pedidoEnStorage = JSON.parse(localStorage.getItem("pedido"))
-        let nuevoLi = document.createElement("li");
-        let contenidoLi = 
-        nuevoLi.textContent = contenidoLi;
-        pedidoCompletoLista.appendChild(nuevoLi);
+    mostrarPedido() // Llamar a la función para mostrar el pedido en la lista
 })
-
