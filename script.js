@@ -130,15 +130,9 @@ obtenerDatosJSON()
             })
         })
     })
-
-
     .catch(error => {
-        console.error("Error externo: ", error);
-    });
-
-
-
-
+        console.error("Error externo: ", error)
+    })
 
 //DATOS CLIENTE
 let objetoCliente = {}
@@ -146,10 +140,10 @@ let objetoCliente = {}
 formulario.forEach(dato => {
     dato.addEventListener("input", function () {
         if (dato.name === "Nombre") {
-            objetoCliente.Nombre = dato.value + ", "
+            objetoCliente.Nombre = dato.value
         }
         if (dato.name === "Direccion") {
-            objetoCliente.Direccion = dato.value + ", "
+            objetoCliente.Direccion = dato.value
         }
         if (dato.name === "Telefono") {
             objetoCliente.Telefono = dato.value
@@ -160,6 +154,7 @@ formulario.forEach(dato => {
 let arrayCompletar = []
 
 function mostrarPedido() {
+    let textoCompletar = ""
     pedidoCompletoLista.textContent = ""
     let pedidoEnStorage = JSON.parse(localStorage.getItem("pedido"))
 
@@ -168,14 +163,15 @@ function mostrarPedido() {
         if (typeof item === "object") {
             Object.keys(item).forEach(key => {
                 let texto = key + ": " + item[key]
-                nuevoLi.textContent = texto
-                pedidoCompletoLista.appendChild(nuevoLi)
+                nuevoLi.textContent = texto        
+                textoCompletar += texto + "\n"
             })
         } else {
             nuevoLi.textContent = item
+            textoCompletar += item + "\n"
         }
-        pedidoCompletoLista.appendChild(nuevoLi)
     })
+    return textoCompletar
 }
 
 completar.addEventListener("click", () => {
@@ -193,18 +189,13 @@ completar.addEventListener("click", () => {
     formulario.forEach(form => {
         form.value = ""
     })
-    mostrarPedido()
+
+    let textoCompletar = mostrarPedido()
 
     Swal.fire({
-        title: "Good job!",
-        text: "You clicked the button!",
+        title: "¡Pedido exitoso!",
+        text: textoCompletar,
         icon: "success",
-        customClass: {
-            title: 'my-swal-title',
-            text: 'my-swal-text',
-            icon: 'my-swal-icon',
-            confirmButton: 'my-swal-button',
-        }
-    });
-    
+        html: `<pre style="white-space: pre-line;">${textoCompletar}</pre>`
+    })
 })
