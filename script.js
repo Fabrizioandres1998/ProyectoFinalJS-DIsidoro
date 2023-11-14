@@ -16,82 +16,129 @@ let precioTotal = 0
 let tamañoSeleccionado = ""
 let objetoTamaño = {}
 
-burgers.forEach(burger => {
-    burger.addEventListener("click", function () {
-        checkboxes.forEach(checkbox => {
-            checkbox.checked = false
-        })
-        tamañoSeleccionado = burger.name
-        objetoTamaño.Tamaño = tamañoSeleccionado
-        precioTotal = parseInt(burger.value)
-        total.textContent = "TOTAL: $ " + precioTotal
-        pedidoCompletoLista.textContent = ""
-    })
-})
-
 //ARMADO AGREGADOS
 let elementosAgregados = []
 let objetoAgregados = { Agregados: elementosAgregados }
-
-armadoAgregados.forEach(agregado => {
-    agregado.addEventListener("change", function () {
-        if (agregado.checked) {
-            if (!elementosAgregados.includes(agregado.name)) {
-                elementosAgregados.push(agregado.name)
-                precioTotal += parseInt(agregado.value)
-                total.textContent = "TOTAL: $ " + precioTotal
-            }
-        } else {
-            const index = elementosAgregados.indexOf(agregado.name)
-            if (index !== -1) {
-                elementosAgregados.splice(index, 1)
-                precioTotal -= parseInt(agregado.value)
-                total.textContent = "TOTAL: $ " + precioTotal
-            }
-        }
-    })
-})
-
-//ARMADO ADEREZOS
-let elementosAderezos = []
-let objetoAderezos = { Aderezos: elementosAderezos }
-
-armadoAderezos.forEach(aderezo => {
-    aderezo.addEventListener("change", function () {
-        if (!elementosAderezos.includes(aderezo.name)) {
-            elementosAderezos.push(aderezo.name)
-            total.textContent = "TOTAL: $ " + precioTotal
-        } else {
-            const index = elementosAderezos.indexOf(aderezo.name)
-            if (index !== -1) {
-                elementosAderezos.splice(index, 1)
-            }
-        }
-    })
-})
 
 //ARMADO BEBIDA
 let elementosBebidas = []
 let objetoBebidas = { Bebidas: elementosBebidas }
 
-armadoBebidas.forEach(bebida => {
-    bebida.addEventListener("change", function () {
-        if (bebida.checked) {
-            if (!elementosBebidas.includes(bebida.name)) {
-                elementosBebidas.push(bebida.name)
-                precioTotal += parseInt(bebida.value)
-                total.innerHTML = "TOTAL : $ " + precioTotal
-            }
-        } else {
-            const index = elementosBebidas.indexOf(bebida.name)
-            if (index !== -1) {
-                elementosBebidas.splice(index, 1)
-                precioTotal -= parseInt(bebida.value)
-                total.textContent = "TOTAL : $ " + precioTotal
-            }
-        }
+//ARMADO ADEREZOS
+let elementosAderezos = []
+let objetoAderezos = { Aderezos: elementosAderezos }
+
+const obtenerDatosJSON = async () => {
+    try {
+        const resp = await fetch('data.json')
+        const data = await resp.json()
+        return data
+    } catch {
+        console.error("Error: ", error)
+    }
+}
+obtenerDatosJSON()
+    //HAMBURGUESAS
+    .then(data => {
+        const Hamburguesas = data.hamburguesas
+
+        burgers.forEach((burger, index) => {
+            burger.addEventListener("click", function () {
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false
+                })
+                tamañoSeleccionado = Hamburguesas[index].tamaño
+                objetoTamaño.Tamaño = tamañoSeleccionado
+                precioTotal = Hamburguesas[index].precio
+                total.textContent = "TOTAL: $ " + precioTotal
+                pedidoCompletoLista.textContent = ""
+            })
+        })
+        return data
     })
-})
+    //AGREGADOS
+    .then(data => {
+        const Agregados = data.agregados
+
+        armadoAgregados.forEach((agregado, index) => {
+            agregado.addEventListener("change", function () {
+                const nombreAgregado = Agregados[index].nombre
+
+                if (agregado.checked) {
+                    if (!elementosAgregados.includes(nombreAgregado)) {
+                        elementosAgregados.push(nombreAgregado)
+                        precioTotal += Agregados[index].precio
+                        total.textContent = "TOTAL: $ " + precioTotal
+                    }
+                } else {
+                    const indexAgregados = elementosAgregados.indexOf(Agregados[index].nombre)
+                    if (indexAgregados !== -1) {
+                        elementosAgregados.splice(indexAgregados, 1)
+                        precioTotal -= Agregados[index].precio
+                        total.textContent = "TOTAL: $ " + precioTotal
+                    }
+                }
+            })
+        })
+        return data
+    })
+    //ADEREZOS
+    .then(data => {
+        const Aderezos = data.aderezos
+
+        armadoAderezos.forEach((aderezo, index) => {
+            aderezo.addEventListener("change", function () {
+                const nombreAderezo = Aderezos[index].nombre
+
+                if (!elementosAderezos.includes(nombreAderezo)) {
+                    elementosAderezos.push(nombreAderezo)
+                    total.textContent = "TOTAL: $ " + precioTotal
+                } else {
+                    const indexAderezos = elementosAderezos.indexOf(nombreAderezo)
+                    if (indexAderezos !== -1) {
+                        elementosAderezos.splice(indexAderezos, 1)
+                        total.textContent = "TOTAL: $ " + precioTotal
+                    }
+                }
+            })
+        })
+        return data
+    })
+
+    //BEBIDAS
+    .then(data => {
+        const Bebidas = data.bebidas
+
+        armadoBebidas.forEach((bebida, index) => {
+            bebida.addEventListener("change", function () {
+                const nombreBebida = Bebidas[index].nombre
+
+                if (bebida.checked) {
+                    if (!elementosBebidas.includes(bebida.name)) {
+                        elementosBebidas.push(nombreBebida)
+                        precioTotal += Bebidas[index].precio
+                        total.textContent = "TOTAL: $ " + precioTotal
+                    }
+                } else {
+                    const indexBebidas = elementosBebidas.indexOf(nombreBebida)
+                    if (indexBebidas !== -1) {
+                        elementosBebidas.splice(indexBebidas, 1)
+                        precioTotal -= Bebidas[index].precio
+                        total.textContent = "TOTAL: $ " + precioTotal
+                    }
+                }
+            })
+        })
+    })
+
+
+    .catch(error => {
+        console.error("Error externo: ", error);
+    });
+
+
+
+
 
 //DATOS CLIENTE
 let objetoCliente = {}
@@ -106,7 +153,7 @@ formulario.forEach(dato => {
         }
         if (dato.name === "Telefono") {
             objetoCliente.Telefono = dato.value
-        }        
+        }
     })
 })
 
@@ -147,4 +194,17 @@ completar.addEventListener("click", () => {
         form.value = ""
     })
     mostrarPedido()
+
+    Swal.fire({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success",
+        customClass: {
+            title: 'my-swal-title',
+            text: 'my-swal-text',
+            icon: 'my-swal-icon',
+            confirmButton: 'my-swal-button',
+        }
+    });
+    
 })

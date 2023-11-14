@@ -97,3 +97,35 @@ ul {
     display: flex;
     justify-content: center;
 }
+
+/* Agrega estos estilos con !important si es necesario */
+.swal-title {
+    color: #db345e !important;
+}
+
+.swal-text {
+    color: #2ecc71 !important;
+}
+
+.swal-icon {
+    background-color: #3ce761 !important;
+    color: #fff !important;
+}
+
+.my-swal-title {
+    color: #db345e;
+}
+
+.my-swal-text {
+    color: #2ecc71;
+}
+
+.my-swal-icon {
+    background-color: #3ce76f;
+    color: #fff;
+}
+
+.my-swal-button {
+    background-color: #db3490;
+    color: #fff;
+}

@@ -1,0 +1,81 @@
+{
+    "hamburguesas": [
+        {
+            "tamaño": "S",
+            "precio": 1500
+        },
+        {
+            "tamaño": "M",
+            "precio": 1800
+        },
+        {
+            "tamaño": "L",
+            "precio": 2100
+        }
+    ],
+    "agregados": [
+        {
+            "nombre": "Tomate",
+            "precio": 200
+        },
+        {
+            "nombre": "Lechuga",
+            "precio": 200
+        },
+        {
+            "nombre": "Bacon",
+            "precio": 250
+        },
+        {
+            "nombre": "Huevo",
+            "precio": 250
+        },
+        {
+            "nombre": "Cebolla",
+            "precio": 200
+        },
+        {
+            "nombre": "Cheddar",
+            "precio": 250
+        }
+    ],
+    "aderezos": [
+        {
+            "nombre": "Mayonesa"
+        },
+        {
+            "nombre": "Ketchup"
+        },
+        {
+            "nombre": "Mostaza"
+        },
+        {
+            "nombre": "Salsa Golf"
+        },
+        {
+            "nombre": "Picante"
+        }
+    ],
+    "bebidas": [
+        {
+            "nombre": "Pepsi",
+            "precio": 700
+        },
+        {
+            "nombre": "Mirinda",
+            "precio": 700
+        },
+        {
+            "nombre": "7 Up",
+            "precio": 700
+        },
+        {
+            "nombre": "Agua mineral",
+            "precio": 600
+        },
+        {
+            "nombre": "Agua saborizada",
+            "precio": 650
+        }
+    ]
+}
