@@ -163,7 +163,7 @@ function mostrarPedido() {
         if (typeof item === "object") {
             Object.keys(item).forEach(key => {
                 let texto = key + ": " + item[key]
-                nuevoLi.textContent = texto        
+                nuevoLi.textContent = texto
                 textoCompletar += texto + "\n"
             })
         } else {
@@ -196,6 +196,9 @@ completar.addEventListener("click", () => {
         title: "¡Pedido exitoso!",
         text: textoCompletar,
         icon: "success",
-        html: `<pre style="white-space: pre-line;">${textoCompletar}</pre>`
-    })
+        html: `<pre style="white-space: pre-line;">${textoCompletar}</pre>`,
+        didClose: () => {
+            location.reload()
+        }
+    }) 
 })
